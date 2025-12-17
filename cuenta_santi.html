@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alquiler vs ONs - Tu plata puede rendir el doble</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; font-family:'Montserrat', sans-serif; background:#0f172a; color:white; overflow:hidden; }
+    .slide {
+      height:100vh; display:flex; align-items:center; justify-content:center; flex-direction:column;
+      text-align:center; padding:40px; background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      transition:all 0.8s; position:absolute; width:100%; top:0; left:0; opacity:0; visibility:hidden;
+    }
+    .active { opacity:1; visibility:visible; z-index:10; }
+    h1 { font-size:4.5rem; margin:0; color:#10b981; }
+    h2 { font-size:3rem; margin:20px 0; }
+    p { font-size:1.6rem; max-width:900px; line-height:1.6; }
+    .big { font-size:5rem; font-weight:700; color:#34d399; margin:20px 0; }
+    table { font-size:2rem; margin:40px 0; border-collapse:collapse; }
+    td, th { padding:20px 40px; border:2px solid #334155; }
+    th { background:#1e293b; color:#a7f3d0; }
+    .green { color:#34d399; }
+    .red { color:#f87171; }
+    .footer { position:absolute; bottom:30px; left:0; width:100%; font-size:1.2rem; color:#94a3b8; }
+    .emoji { font-size:4rem; margin:20px 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1 -->
+<div class="slide active">
+  <h1>¿Seguís alquilando tu inmueble<br>por solo el 3-4% anual?</h1>
+  <div class="big emoji">🏠→💤</div>
+  <p>Te muestro cómo duplicar tu renta mensual<br>sin inquilinos, expensas ni pintores</p>
+  <div class="footer">Deslizá o usá flechas →</div>
+</div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <h2>Tu inmueble de USD 140.000</h2>
+    <p>Alquiler actual: <strong>$700.000 ARS</strong><br>Tipo de cambio blue ≈ $1.440</p>
+    <h1 class="big red">≈ USD 486 bruto/mes</h1>
+    <p>Descontando expensas, ABL, períodos vacíos y arreglos…</p>
+    <h1 class="big red">te quedan ≈ USD 340–390 neto/mes</h1>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide">
+    <h2>La misma plata en ONs (2025)</h2>
+    <table>
+      <tr><th></th><th>Alquiler</th><th>Cartera ONs</th></tr>
+      <tr><td>Rendimiento neto anual</td><td class="red">≈ 3,2%</td><td class="green">8,2%</td></tr>
+      <tr><td>Ingreso mensual</td><td class="red">USD 350 promedio</td><td class="green">USD 950 promedio</td></tr>
+      <tr><td>Gestión</td><td>Inquilinos, expensas, reformas</td><td>¡Nada! Cobrás y listo</td></tr>
+      <tr><td>Liquidez</td><td>Meses/años para vender</td><td>24 hs</td></tr>
+    </table>
+    <p class="big green">¡Casi el triple de plata sin hacer nada!</p>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide">
+    <h2>Ejemplo real que estoy cobrando hoy</h2>
+    <p>USD 140.000 invertidos en cartera diversificada:</p>
+    <h1 class="big green">USD 950–1.050 por mes</h1>
+    <p>Pagos fijos cada mes o trimestre<br>Empresas: YPF • Telecom • IRSA • Cresud • Pampa</p>
+    <div class="emoji">💰📅</div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slide">
+    <h1>¿Querés ver tu caso exacto?</h1>
+    <p>Traé tu última liquidación de alquiler y en 15 minutos te armo<br>tu cartera personalizada + cuánto vas a cobrar de verdad.</p>
+    <p>WhatsApp → 1157092165<br>o mandame privado</p>
+    <div class="footer">Cr.Santiago Hernandez - Vecino del country</div>
+  </div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function nextSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+    if (e.key === 'ArrowLeft' && current > 0) {
+      slides[current].classList.remove('active');
+      current--;
+      slides[current].classList.add('active');
+    }
+  });
+
+  document.addEventListener('click', nextSlide);
+  document.addEventListener('touchstart', e => {
+    if (e.touches[0].clientX > window.innerWidth/2) nextSlide();
+    else if (current > 0) {
+      slides[current].classList.remove('active');
+      current--;
+      slides[current].classList.add('active');
+    }
+  });
+</script>
+
+</body>
+</html>
